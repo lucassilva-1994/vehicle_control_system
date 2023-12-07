@@ -1,18 +1,26 @@
 <?php
 
+use App\Livewire\Dashboard\Employee\EmployeeForm;
+use App\Livewire\Dashboard\User\Profile;
+use App\Livewire\Dashboard\Vehicle\VehicleForm;
+use App\Livewire\Dashboard\Vehicle\VehicleShow;
+use App\Livewire\SignIn;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', SignIn::class)->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::middleware('auth')->group(function(){
+    Route::prefix('/dashboard')->group(function(){
+        Route::get('/profile', Profile::class)->name('profile');
+        Route::get('/vehicle/show',VehicleShow::class)->name('vehicle.show');
+        Route::get('/vehicle/form',VehicleForm::class)->name('vehicle.form');
+        Route::get('/vehicle/edit/{id}', VehicleForm::class)->name('vehicle.edit');
+        Route::get('/employee/form', EmployeeForm::class)->name('employee.form');
+    });
+    Route::get('/logout', function(){
+        auth()->logout();
+        return redirect(route('home'));
+    })->name('logout');
 });
