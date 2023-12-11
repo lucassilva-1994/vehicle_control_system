@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create($this->table, function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->bigInteger('order');
-            $table->string('postcode',9);
+            $table->string('zipcode',9);
             $table->string('street');
             $table->string('neighborhood')->nullable();
             $table->string('number');

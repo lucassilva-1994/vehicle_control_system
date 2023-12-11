@@ -1,4 +1,4 @@
-<div class="container">
+<div>
     @if (session('success'))
         <div class="alert alert-success">
             <h7><i class="bi bi-check-circle-fill"></i> {{ session('success') }}</h7>

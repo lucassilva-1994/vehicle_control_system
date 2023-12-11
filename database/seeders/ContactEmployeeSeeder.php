@@ -15,17 +15,27 @@ class ContactEmployeeSeeder extends Seeder
         $employees = Employee::get();
         foreach($employees as $employee){
             HelperModel::setData(ContactEmployee::class,[
-                'name_contact' => $employee->name,
+                'name' => $employee->name,
+                'email' => $employee->email,
                 'phone_number' => fake()->phoneNumber(),
                 'employee_id' => $employee->id
             ]);
-            for($i=0;$i<Arr::random([1,7]);$i++){
+            for($i=0;$i<Arr::random([4,10]);$i++){
+                $name = fake()->name();
                 HelperModel::setData(ContactEmployee::class,[
-                    'name_contact' => fake()->name(),
+                    'name' => $name,
+                    'email' => self::generateEmail($name),
                     'phone_number' => fake()->phoneNumber(),
                     'employee_id' => $employee->id
                 ]);
             }
         }
+    }
+
+    private static function generateEmail($name)
+    {
+        $name = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+        $name =  preg_replace('/[^a-zA-Z0-9]/', '', strtolower(str_replace([' ', 'Dr.', 'Sr.', 'Srta.', 'Sra.'], '', $name)));
+        return $name . '@' . Arr::random([fake()->freeEmailDomain()]);
     }
 }

@@ -218,6 +218,9 @@ return [
         'brand' => 'marca',
         'model' => 'modelo',
         'color' => 'cor',
+        'job_title_id' => 'cargo',
+        'street' => 'rua',
+        'neighborhood' => 'bairro'
     ],
 
 ];

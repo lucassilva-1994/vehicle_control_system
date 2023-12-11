@@ -21,7 +21,7 @@ class VehicleShow extends Component
     #[Layout('livewire.dashboard.layout')]
     public function render()
     {
-        $vehicles = Vehicle::whereCompanyId($this->company_id)
+        $vehicles = Vehicle::withCount('services')->withSum('services','value')->orderBy('services_count','desc')->whereCompanyId($this->company_id)
         ->paginate($this->perPage);
         $this->resetPage();
         return view('livewire.dashboard.vehicle.vehicle-show',['vehicles' => $vehicles]);

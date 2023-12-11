@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Company;
+use App\Models\Employee;
 use App\Models\HelperModel;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -13,30 +14,18 @@ class UserSeeder extends Seeder
 
     public function run(): void
     {
-        $companies = Company::get();
-        foreach ($companies as $company) {
-            HelperModel::setData(User::class, [
-                'name' => $company->legal_name,
-                'email' => $company->contact_email,
-                'username' => self::generateUserName($company->legal_name),
-                'isAdmin' => 1,
-                'password' => '12345678910',
-                'company_id' => $company->id
-            ]);
-        }
-
-        for ($i = 0; $i < 5000; $i++) {
-            $name = fake()->name();
-            $email = self::generateEmail($name);
-            $emailVerify = User::whereEmail($email)->first();
+        $employees = Employee::get();
+        foreach($employees as $employee){
+            $emailVerify = User::whereEmail($employee->email)->first();
             if (!$emailVerify) {
                 HelperModel::setData(User::class, [
-                    'name' => $name,
-                    'username' => self::generateUserName($name),
-                    'email' => $email,
+                    'name' => $employee->name,
+                    'username' => self::generateUserName($employee->name),
+                    'email' => $employee->email,
                     'password' => '12345678910',
+                    'employee_id' => $employee->id,
                     'isAdmin' => 0,
-                    'company_id' => Arr::random($companies->pluck('id')->toArray())
+                    'company_id' => $employee->company_id
                 ]);
             }
         }

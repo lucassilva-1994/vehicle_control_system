@@ -17,18 +17,19 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Placa</th>
-                            <th>Cor</th>
-                            <th>Ano</th>
-                            <th>Renavan</th>
+                            <th>Marca:</th>
+                            <th>Modelo:</th>
+                            <th>Placa:</th>
+                            <th>Cor:</th>
+                            <th>Ano:</th>
+                            <th>Renavan:</th>
+                            <th>Serviços:</th>
+                            <th>Valores:</th>
                             <th>Cadastrado por:</th>
-                            <th>Cadastrado em:</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($vehicles as $vehicle)
+                        @foreach ($vehicles->load('user','services') as $vehicle)
                             <tr class="text-nowrap">
                                 <td>{{ $vehicle->brand }}</td>
                                 <td>{{ $vehicle->model }}</td>
@@ -36,8 +37,9 @@
                                 <td>{{ $vehicle->color }}</td>
                                 <td>{{ $vehicle->year }}</td>
                                 <td>{{ $vehicle->renavan }}</td>
+                                <td>{{ $vehicle->services->count() }}</td>
+                                <td>R$ {{ number_format($vehicle->services_sum_value, 2, ",", ".") }}</td>
                                 <td>{{ $vehicle->user->username }}</td>
-                                <td>{{ $vehicle->created_at }}</td>
                             </tr>
                         @endforeach
                     </tbody>

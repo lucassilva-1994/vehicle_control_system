@@ -4,7 +4,7 @@
             <h2>Novo colaborador</h2>
         </div>
         <div class="card-body">
-            <form class="row" wire:submit="create">
+            <form class="row mb-3" wire:submit="create">
                 <fieldset>
                     <legend>Dados pessoais</legend>
                 </fieldset>
@@ -81,10 +81,4 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-    <script>
-        $('#cep').mask('00000-000');
-        $('#cpf').mask('000.000.000-00');
-    </script>
 </div>

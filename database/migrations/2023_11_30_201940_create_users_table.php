@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->boolean('isAdmin')->default(0);
+            $table->foreignUuid('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreignUuid('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();

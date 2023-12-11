@@ -26,4 +26,16 @@ class Company extends Model
     public function address(){
         return $this->hasOne(Address::class);
     }
+
+    public function vehicles(){
+        return $this->hasMany(Vehicle::class);
+    }
+
+    public function employees(){
+        return $this->hasMany(Employee::class);
+    }
+
+    public function services(){
+        return $this->hasMany(Service::class);
+    }
 }

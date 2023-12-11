@@ -6,16 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    private $table = 'contact_employees';
+    private $table = 'services';
     public function up(): void
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->bigInteger('order');
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone_number');
-            $table->foreignUuid('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->string('description',250);
+            $table->decimal('value');
+            $table->foreignUuid('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreignUuid('created_by')->references('id')->on('users');
+            $table->foreignUuid('executed_by')->references('id')->on('employees');
+            $table->foreignUuid('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
         });

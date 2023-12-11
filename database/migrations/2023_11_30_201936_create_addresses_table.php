@@ -14,7 +14,9 @@ return new class extends Migration
             $table->bigInteger('order');
             $table->string('address');
             $table->string('city');
-            $table->string('post_code');
+            $table->string('state');
+            $table->string('zipcode');
+            $table->string('neighborhood')->nullable();
             $table->foreignUuid('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();

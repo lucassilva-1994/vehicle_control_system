@@ -3,6 +3,7 @@
 namespace App\Livewire\Dashboard\User;
 use App\Models\Employee;
 use App\Models\JobTitle;
+use App\Models\User;
 use App\Models\Vehicle;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -13,22 +14,20 @@ class Profile extends Component
     use WithPagination;
     public $company_id;
     public $email;
+    public $user_id;
     public function mount()
     {
         $this->company_id = auth()->user()->company_id;
         $this->email = auth()->user()->email;
+        $this->user_id = auth()->user()->id;
     }
     
     #[Layout('livewire.dashboard.layout')]
     public function render()
     {
-        $employee = Employee::whereEmail($this->email)->first();
-        $employees = Employee::whereCompanyId($this->company_id)->paginate(30);
-        $vehicles = Vehicle::orderBy('order','DESC')->whereCompanyId($this->company_id)->paginate(30);
-        $jobTitles = JobTitle::withCount('employees')->orderBy('employees_count','DESC')->whereCompanyId($this->company_id)->paginate(30);
+        $user = User::find($this->user_id);
         return view(
-            'livewire.dashboard.user.profile',
-            ['employees' => $employees,'vehicles'=> $vehicles, 'job_titles' => $jobTitles,'employee' => $employee]
+            'livewire.dashboard.user.profile', ['user' => $user]
         );
     }
 }
