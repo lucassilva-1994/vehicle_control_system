@@ -17,8 +17,9 @@ class EmployeeShow extends Component
     }
 
     public function createUser(string $id){
+        $this->authorize('create_user');
         $employee = Employee::find($id);
-        $user = HelperModel::setData(User::class,[
+        HelperModel::setData(User::class,[
             'name' => $employee->name,
             'username' => self::generateUserName($employee->name),
             'email' => $employee->email,
@@ -27,6 +28,12 @@ class EmployeeShow extends Component
             'employee_id' => $employee->id,
             'isAdmin' => 0
         ]);
+        
+    }
+
+    public function delete(string $id){
+        $this->authorize('delete_employee');
+        return HelperModel::updateData(Employee::class,['id' => $id],['deleted' => 1]);
     }
 
     private static function generateUserName($name)
@@ -40,7 +47,7 @@ class EmployeeShow extends Component
     public function render()
     {
         $this->authorize('show_employee');
-        $employees = Employee::whereCompanyId($this->company_id)->orderBy('order','DESC')->paginate();
+        $employees = Employee::whereDeleted(0)->whereCompanyId($this->company_id)->orderBy('order','DESC')->paginate(100);
         return view('livewire.dashboard.employee.employee-show', ['employees' => $employees]);
     }
 }

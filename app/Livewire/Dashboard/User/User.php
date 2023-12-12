@@ -29,6 +29,6 @@ class User extends Component
     }
 
     private function roles(){
-        return Role::get();
+        return Role::orderBy('description','ASC')->get();
     }
 }

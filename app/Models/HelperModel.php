@@ -17,6 +17,11 @@ class HelperModel extends Model
         return $model::create($data);
     }
 
+    public static function updateData($model,array $where,array $data){
+        $data['updated_at'] = now();
+        return $model::where($where)->update($data);
+    }
+
     private static function setUUid(){
         return Uuid::uuid4();
     }

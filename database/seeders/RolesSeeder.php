@@ -14,18 +14,25 @@ class RolesSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-                ['name' => 'create_employee','description' => 'Cadastrar funcionário.'],
-                ['name' => 'show_employee','description' => 'Visualizar funcionário.'],
-                ['name' => 'update_employee','description' => 'Atualizar funcionário.'],
-                ['name' => 'delete_employee','description' => 'Deletar funcionário.'],
-                ['name' => 'create_service','description' => 'Cadastrar serviço.'],
-                ['name' => 'show_service','description' => 'Visualizar serviço.'],
-                ['name' => 'update_service','description' => 'Atualizar serviço.'],
-                ['name' => 'delete_service','description' => 'Deletar serviço.'],
-                ['name' => 'create_vehicle','description' => 'Cadastrar veículo.'],
-                ['name' => 'show_vehicle','description' => 'Visualizar veículo.'],
-                ['name' => 'update_vehicle','description' => 'Atualizar veículo.'],
-                ['name' => 'delete_vehicle','description' => 'Deletar veículo.'],
+                ['name' => 'create_employee','description' => 'Cadastrar funcionário'],
+                ['name' => 'show_employee','description' => 'Visualizar funcionário'],
+                ['name' => 'update_employee','description' => 'Atualizar funcionário'],
+                ['name' => 'delete_employee','description' => 'Deletar funcionário'],
+
+                ['name' => 'create_service','description' => 'Cadastrar serviço'],
+                ['name' => 'show_service','description' => 'Visualizar serviço'],
+                ['name' => 'update_service','description' => 'Atualizar serviço'],
+                ['name' => 'delete_service','description' => 'Deletar serviço'],
+
+                ['name' => 'create_vehicle','description' => 'Cadastrar veículo'],
+                ['name' => 'show_vehicle','description' => 'Visualizar veículo'],
+                ['name' => 'update_vehicle','description' => 'Atualizar veículo'],
+                ['name' => 'delete_vehicle','description' => 'Deletar veículo'],
+                
+                ['name' => 'create_user','description' => 'Cadastrar usuário'],
+                ['name' => 'show_user','description' => 'Visualizar usuário'],
+                ['name' => 'update_user','description' => 'Atualizar usuário'],
+                ['name' => 'delete_user','description' => 'Deletar usuário'],
         ];
 
         foreach($roles as $role){

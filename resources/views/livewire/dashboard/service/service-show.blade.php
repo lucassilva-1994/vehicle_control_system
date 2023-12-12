@@ -1,5 +1,5 @@
 <div wire:poll.1s>
-    <h3>Serviços</h3>
+    <h3>Serviços ({{ $services->count() }})</h3>
     @foreach ($services->load('vehicle','user','employee') as $service)
         <div class="card mb-3">
             <div class="card-header">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-6">
                     <label>Executado por:</label>
-                    <input type="text" class="form-control" readonly value="{{ $service->employee->name }}"/>
+                    <input type="text" class="form-control" readonly value="{{  $service->employee->name  }}"/>
                 </div>
             </div>
         </div>

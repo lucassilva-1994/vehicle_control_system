@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('description',250);
             $table->decimal('value');
             $table->foreignUuid('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->foreignUuid('created_by')->references('id')->on('users');
-            $table->foreignUuid('executed_by')->references('id')->on('employees');
+            $table->foreignUuid('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignUuid('executed_by')->references('id')->on('employees')->onDelete('cascade');
             $table->foreignUuid('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();

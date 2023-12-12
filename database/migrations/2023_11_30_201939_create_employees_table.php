@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignUuid('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreignUuid('job_title_id')->references('id')->on('job_titles')->onDelete('cascade');
             $table->dateTime('created_at');
+            $table->boolean('deleted')->default(0);
             $table->dateTime('updated_at')->nullable();
         });
     }

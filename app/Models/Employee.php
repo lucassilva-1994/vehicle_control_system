@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     protected $table = 'employees';
-    protected $fillable = ['id','order','name','cpf','email','company_id','job_title_id','created_at','updated_at'];
+    protected $fillable = ['id','order','name','cpf','email','company_id','job_title_id','deleted','created_at','updated_at'];
     public $timestamps = false;
     protected $keyType = 'string';
     public $incrementing = false;

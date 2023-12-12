@@ -16,12 +16,13 @@
                             <input type="password" class="form-control" wire:model="password" id="password"
                                 placeholder="Sua senha">
                         </div>
-                        <div class="d-grid">
+                        <div class="d-grid mb-3">
                             <button type="submit" class="btn btn-primary">Entrar</button>
                         </div>
                     </form>
+                    @include('messages')
             </div>
-            @include('messages')
+            
         </div>
     </div>
 </div>

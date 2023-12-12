@@ -27,7 +27,7 @@
                                         wire:click="createUser('{{ $employee->id }}')">
                                         Criar usuário
                                     </button>
-                                    <button class="btn btn-danger">Excluir</button>
+                                    <button class="btn btn-danger" wire:click="delete('{{ $employee->id }}')">Excluir</button>
                                 </td>
                             </tr>
                         @endforeach
