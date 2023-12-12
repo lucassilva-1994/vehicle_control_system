@@ -19,7 +19,7 @@ class EmployeeSeeder extends Seeder
         
         $companies = Company::get();
         foreach ($companies as $company) {
-            for ($i = 0; $i < rand(100,300); $i++) {
+            for ($i = 0; $i < 10; $i++) {
                 $name = fake()->name();
                 $cpf = Generator::cpf(true);
                 $cpfVerify = Employee::whereCpf($cpf)->first();

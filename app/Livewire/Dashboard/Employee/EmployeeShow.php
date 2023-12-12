@@ -39,6 +39,7 @@ class EmployeeShow extends Component
     #[Layout('livewire.dashboard.layout')]
     public function render()
     {
+        $this->authorize('show_employee');
         $employees = Employee::whereCompanyId($this->company_id)->orderBy('order','DESC')->paginate();
         return view('livewire.dashboard.employee.employee-show', ['employees' => $employees]);
     }

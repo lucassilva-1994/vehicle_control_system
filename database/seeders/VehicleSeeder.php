@@ -17,7 +17,7 @@ class VehicleSeeder extends Seeder
         $companies = Company::get();
         foreach ($companies as $company) {
             $colors = ['Vermelho', 'Verde', 'Azul', 'Amarelo', 'Laranja', 'Roxo', 'Rosa', 'Marrom', 'Preto', 'Branco', 'Cinza', 'Ciano', 'Magenta', 'Ouro', 'Prata', 'Turquesa', 'Lima', 'Aqua', 'Oliva', 'Marfim', 'Salmon', 'Teal', 'Chocolate', 'Índigo', 'Verde Oliva', 'Violeta', 'Dourado', 'Bege', 'Verde Limão'];
-            for ($i = 0; $i < Arr::random([100,200]); $i++) {
+            for ($i = 0; $i < 20; $i++) {
                 $plate = self::generatePlate();
                 $renavan = rand(11111111111,99999999999);
                 $plateUnique = Vehicle::wherePlate($plate)->first();

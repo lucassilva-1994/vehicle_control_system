@@ -53,7 +53,9 @@ class EmployeeForm extends Component
 
     public function create()
     {
+        $this->authorize('create_employee');
         $this->validate();
+        
         $employee = HelperModel::setData(Employee::class, [
             'name' => $this->name,
             'cpf' => $this->cpf,
@@ -72,7 +74,7 @@ class EmployeeForm extends Component
                 'state' => $this->state,
                 'employee_id' => $employee->id
             ]);
-            $this->reset('name','cpf','email','cep','street','neighborhood','number','complement','city','state','job_title_id');
+            $this->reset('name','cpf','email','zipcode','street','neighborhood','number','complement','city','state','job_title_id');
             return session()->flash('success', 'Colaborador cadastrado com sucesso.');
         }
         return session()->flash('error', 'Falha ao cadastrar funcionário.');

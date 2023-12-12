@@ -52,7 +52,7 @@ class ServicesSeeder extends Seeder
           ];
           $companies = Company::get();
           foreach($companies as $company){
-                for($i=0; $i < rand(1000,9000); $i++){
+                for($i=0; $i < 10; $i++){
                     HelperModel::setData(Service::class,[
                         'description' => Arr::random($services),
                         'value' => fake()->randomFloat(2,50,1500),

@@ -11,7 +11,7 @@ class CompanySeeder extends Seeder
 {
     public function run(): void
     {
-        for($i=0;$i<100;$i++){
+        for($i=0;$i<1;$i++){
             $cnpj = Generator::cnpj(true);
             $company= Company::whereCnpj($cnpj)->first();
             $legal_name = fake()->unique(0,100000000)->company();

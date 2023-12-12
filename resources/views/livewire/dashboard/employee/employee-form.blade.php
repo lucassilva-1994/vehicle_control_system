@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md-2">
                     <label for="cep">CEP:</label>
-                    <input type="text" class="form-control" wire:model.defer="cep" id="cep" placeholder="CEP"
+                    <input type="text" class="form-control" wire:model.defer="zipcode" id="zipcode" placeholder="CEP"
                         wire:change="findAddress" />
                 </div>
                 <div class="col-md-5">

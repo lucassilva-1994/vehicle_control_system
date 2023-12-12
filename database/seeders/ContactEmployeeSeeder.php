@@ -20,7 +20,7 @@ class ContactEmployeeSeeder extends Seeder
                 'phone_number' => fake()->phoneNumber(),
                 'employee_id' => $employee->id
             ]);
-            for($i=0;$i<Arr::random([4,10]);$i++){
+            for($i=0;$i<2;$i++){
                 $name = fake()->name();
                 HelperModel::setData(ContactEmployee::class,[
                     'name' => $name,
